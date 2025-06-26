@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ $t('navigation.nav_about') }}</h1>
+  <h1>{{ t('navigation.nav_about') }}</h1>
   <button @click="switchLanguage">Сменить</button>
 </template>
 
