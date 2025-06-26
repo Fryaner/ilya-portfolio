@@ -1,9 +1,9 @@
 import { createI18n } from 'vue-i18n'
 
 export const i18n = createI18n({
-  locale: 'ru',
+  locale: 'RU',
   messages: {
-    ru: {
+    RU: {
       brand_tagline: 'Поток творчества и кода',
 
       navigation: {
@@ -202,7 +202,7 @@ export const i18n = createI18n({
         loader_subtext: 'Frontend-разработчик',
       },
     },
-    en: {
+    EN: {
       brand_tagline: 'Flow of creativity and code',
 
       navigation: {
