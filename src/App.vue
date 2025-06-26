@@ -16,6 +16,6 @@ const switchLanguage = () => {
 }
 
 onMounted(() => {
-  locale.value = localStorage.getItem('language') ? localStorage.getItem('language') : 'ru'
+  locale.value = localStorage.getItem('language') ?? 'ru'
 })
 </script>
