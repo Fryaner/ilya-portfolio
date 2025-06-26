@@ -6,8 +6,9 @@
 <script setup lang="js">
 // import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+const { t, locale } = useI18n()
 console.log(t)
+console.log(locale.value)
 
 // const switchLanguage = () => {
 //   locale.value = locale.value === 'ru' ? 'en' : 'ru'
