@@ -1,3 +1,8 @@
+$media-desctop: 1440px;
+$media-small-desctop: 1200px;
+$media-tablet: 1024px;
+$media-mobile: 768px;
+
 $bg-primary: #ffffff;
 $bg-secondary: #f8fafc;
 $bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #e6fffa 50%, #f0f9ff 100%);
@@ -5,6 +10,7 @@ $text-primary: #1f2937;
 $text-secondary: #6b7280;
 $text-muted: #9ca3af;
 $border-color: #e5e7eb;
+$border-color-image: #64748b;
 $card-bg: #ffffff;
 $nav-bg: rgba(255, 255, 255, 0.9);
 
@@ -22,10 +28,11 @@ $purple-bg: #f5f3ff;
 $dark-bg-primary: #0f172a;
 $dark-bg-secondary: #1e293b;
 $dark-bg-gradient: linear-gradient(135deg, #0a1a1a 0%, #064e3b 30%, #0c4a6e 70%, #1e293b 100%);
-$dark-text-primary: #f1f5f9;
+$dark-text-primary: #e6fffa;
 $dark-text-secondary: #a7f3d0;
 $dark-text-muted: #94a3b8;
 $dark-border-color: #065f46;
+$dark-border-color-image: #10b981;
 $dark-card-bg: #1a2e3a;
 $dark-nav-bg: rgba(10, 26, 26, 0.95);
 $dark-green-bg: rgba(16, 185, 129, 0.1);
@@ -42,6 +49,7 @@ $dark-form-bg-dark: linear-gradient(135deg, #334155 0%, #475569 100%);
   --text-secondary: #{$text-secondary};
   --text-muted: #{$text-muted};
   --border-color: #{$border-color};
+  --border-color-image: #{$border-color-image};
   --card-bg: #{$card-bg};
   --nav-bg: #{$nav-bg};
 
@@ -65,6 +73,7 @@ $dark-form-bg-dark: linear-gradient(135deg, #334155 0%, #475569 100%);
   --text-secondary: #{$dark-text-secondary};
   --text-muted: #{$dark-text-muted};
   --border-color: #{$dark-border-color};
+  --border-color-image: #{$dark-border-color-image};
   --card-bg: #{$dark-card-bg};
   --nav-bg: #{$dark-nav-bg};
 

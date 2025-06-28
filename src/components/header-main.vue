@@ -120,6 +120,7 @@ onMounted(() => {
   background-color: var(--nav-bg);
   top: 0;
   backdrop-filter: blur(12px);
+  z-index: 1;
 
   &__container {
     max-width: 1236px;
@@ -185,9 +186,10 @@ onMounted(() => {
     a {
       color: var(--text-secondary);
       transition: 0.3s;
-
-      &:hover {
-        color: rgb(22 163 74);
+      @media (hover: hover) {
+        &:hover {
+          color: rgb(22 163 74);
+        }
       }
     }
   }
@@ -223,9 +225,12 @@ onMounted(() => {
       border-radius: 50%;
       cursor: pointer;
       transition: 0.5s;
-      &:hover {
-        border-color: var(--green-accent);
-        transform: scale(1.05);
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: var(--green-accent);
+          transform: scale(1.05);
+        }
       }
     }
     &__lang {

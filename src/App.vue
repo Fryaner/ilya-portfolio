@@ -1,14 +1,9 @@
 <template>
   <headerComponent />
-  <p class="test">flfl</p>
+  <coverMain />
 </template>
 
 <script setup lang="js">
 import headerComponent from './components/header-main.vue'
+import coverMain from './components/cover-main.vue'
 </script>
-
-<style>
-.test {
-  height: 1000px;
-}
-</style>
