@@ -27,37 +27,41 @@
           </li>
         </ul>
         <div class="header__btns">
-          <button class="header__theme">
-            <i class="fas fa-sun"></i>
-          </button>
-          <button @click="changeLanguage" class="header__lang">
-            {{ currentLanguage }}
-          </button>
-          <button class="header__burger">
+          <div class="btns__settings">
+            <button class="btns__theme">
+              <i class="fas fa-sun"></i>
+            </button>
+            <button @click="changeLanguage" class="btns__lang">
+              {{ currentLanguage }}
+            </button>
+          </div>
+          <button @click="toggleBurgerMenu" class="btns__burger">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
       </div>
-      <ul class="header__list header__list-mobile">
-        <li>
-          <a href="">{{ t('navigation.nav_about') }}</a>
-        </li>
-        <li>
-          <a href="">{{ t('navigation.nav_skills') }}</a>
-        </li>
-        <li>
-          <a href="">{{ t('navigation.nav_portfolio') }}</a>
-        </li>
-        <li>
-          <a href="">{{ t('navigation.nav_calculator') }}</a>
-        </li>
-        <li>
-          <a href="">{{ t('navigation.nav_experience') }}</a>
-        </li>
-        <li>
-          <a href="">{{ t('navigation.nav_contact') }}</a>
-        </li>
-      </ul>
+      <Transition name="mobile">
+        <ul v-show="isActiveBurgerMenu" class="header__list header__list-mobile">
+          <li>
+            <a href="">{{ t('navigation.nav_about') }}</a>
+          </li>
+          <li>
+            <a href="">{{ t('navigation.nav_skills') }}</a>
+          </li>
+          <li>
+            <a href="">{{ t('navigation.nav_portfolio') }}</a>
+          </li>
+          <li>
+            <a href="">{{ t('navigation.nav_calculator') }}</a>
+          </li>
+          <li>
+            <a href="">{{ t('navigation.nav_experience') }}</a>
+          </li>
+          <li>
+            <a href="">{{ t('navigation.nav_contact') }}</a>
+          </li>
+        </ul>
+      </Transition>
     </nav>
   </header>
 </template>
@@ -65,7 +69,7 @@
 <script lang="js" setup>
 import { useI18n } from 'vue-i18n'
 import { useStore } from '@/stores/store'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 
 const store = useStore()
@@ -75,13 +79,39 @@ const { currentLanguage } = storeToRefs(store)
 
 const { t } = useI18n()
 
+const isActiveBurgerMenu = ref()
+
+function getStateIsBurger() {
+  const isActive = localStorage.getItem('isActiveBurgerMenu')
+  if (isActive === 'true') {
+    isActiveBurgerMenu.value = true
+  } else {
+    isActiveBurgerMenu.value = false
+  }
+}
+
+function toggleBurgerMenu() {
+  isActiveBurgerMenu.value = !isActiveBurgerMenu.value
+  localStorage.setItem('isActiveBurgerMenu', isActiveBurgerMenu.value)
+}
+
 onMounted(() => {
   getLanguage()
-  console.log(currentLanguage)
+  getStateIsBurger()
 })
 </script>
 
 <style lang="scss" scoped>
+.mobile-enter-active,
+.mobile-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.mobile-enter-from,
+.mobile-leave-to {
+  transform: translateX(-100%);
+}
+
 .header {
   border-bottom: 1px solid $border-color;
   position: fixed;
@@ -163,41 +193,6 @@ onMounted(() => {
       }
     }
   }
-
-  &__theme,
-  &__lang {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: 2px solid $border-color;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-    &:hover {
-      border-color: $green-accent;
-      transform: scale(1.05);
-    }
-  }
-
-  &__theme {
-    i {
-      color: rgb(234 179 8);
-    }
-  }
-
-  &__burger {
-    display: none;
-    background-color: transparent;
-    border: none;
-
-    @media screen and (max-width: 768px) {
-      display: block;
-    }
-    i {
-      color: green;
-      font-size: 20px;
-    }
-  }
 }
 
 @keyframes pulse {
@@ -212,6 +207,48 @@ onMounted(() => {
 .header__btns {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+
+  .btns {
+    &__settings {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    &__theme,
+    &__lang {
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: 2px solid $border-color;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        border-color: $green-accent;
+        transform: scale(1.05);
+      }
+    }
+
+    &__theme {
+      i {
+        color: rgb(234 179 8);
+      }
+    }
+
+    &__burger {
+      display: none;
+      background-color: transparent;
+      border: none;
+
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+      i {
+        color: green;
+        font-size: 20px;
+      }
+    }
+  }
 }
 </style>
