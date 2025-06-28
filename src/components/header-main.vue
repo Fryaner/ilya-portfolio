@@ -28,8 +28,8 @@
         </ul>
         <div class="header__btns">
           <div class="btns__settings">
-            <button class="btns__theme">
-              <i class="fas fa-sun"></i>
+            <button @click="setTheme" class="btns__theme">
+              <i :class="!currentTheme ? 'fas fa-sun sun' : 'fas fa-moon moon'"></i>
             </button>
             <button @click="changeLanguage" class="btns__lang">
               {{ currentLanguage }}
@@ -74,8 +74,8 @@ import { storeToRefs } from 'pinia'
 
 const store = useStore()
 
-const { getLanguage, changeLanguage } = useStore()
-const { currentLanguage } = storeToRefs(store)
+const { getLanguage, changeLanguage, setTheme, getTheme } = useStore()
+const { currentLanguage, currentTheme } = storeToRefs(store)
 
 const { t } = useI18n()
 
@@ -98,6 +98,7 @@ function toggleBurgerMenu() {
 onMounted(() => {
   getLanguage()
   getStateIsBurger()
+  getTheme()
 })
 </script>
 
@@ -113,9 +114,12 @@ onMounted(() => {
 }
 
 .header {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid var(--border-color);
   position: fixed;
   width: 100%;
+  background-color: var(--nav-bg);
+  top: 0;
+  backdrop-filter: blur(12px);
 
   &__container {
     max-width: 1236px;
@@ -136,7 +140,7 @@ onMounted(() => {
 
     .logo {
       &__btn {
-        background-color: $brand-primary;
+        background-color: var(--brand-primary);
         width: 40px;
         height: 40px;
         border: none;
@@ -150,18 +154,12 @@ onMounted(() => {
       }
 
       &__title {
-        color: $brand-primary;
+        color: var(--brand-primary);
         font-size: 24px;
         font-weight: 700;
         text-transform: uppercase;
       }
     }
-  }
-
-  &__lang {
-    font-weight: 600;
-    color: $text-primary;
-    font-size: 14px;
   }
 
   &__list {
@@ -185,7 +183,7 @@ onMounted(() => {
       }
     }
     a {
-      color: $text-secondary;
+      color: var(--text-secondary);
       transition: 0.3s;
 
       &:hover {
@@ -198,7 +196,7 @@ onMounted(() => {
 @keyframes pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 $brand-primary;
+    box-shadow: 0 0 0 0 var(--brand-primary);
   }
   50% {
     box-shadow: 0 0 0 10px transparent;
@@ -220,19 +218,29 @@ onMounted(() => {
       width: 40px;
       height: 40px;
       background-color: transparent;
-      border: 2px solid $border-color;
+      border: 2px solid var(--border-color);
+      background-color: var(--card-bg);
       border-radius: 50%;
       cursor: pointer;
       transition: 0.5s;
       &:hover {
-        border-color: $green-accent;
+        border-color: var(--green-accent);
         transform: scale(1.05);
       }
     }
+    &__lang {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
 
     &__theme {
-      i {
+      .sun {
         color: rgb(234 179 8);
+      }
+
+      .moon {
+        color: oklch(70.7% 0.165 254.624);
       }
     }
 
@@ -250,5 +258,9 @@ onMounted(() => {
       }
     }
   }
+}
+
+.test {
+  color: var(--purple-accent);
 }
 </style>
