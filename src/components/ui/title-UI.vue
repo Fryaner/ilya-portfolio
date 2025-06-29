@@ -3,7 +3,7 @@
     <h2>
       <slot name="title"></slot>
     </h2>
-    <h3><slot name="subtitle"></slot></h3>
+    <p><slot name="subtitle"></slot></p>
     <div class="line"></div>
   </div>
 </template>
