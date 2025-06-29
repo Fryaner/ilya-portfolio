@@ -9,30 +9,55 @@
       <p class="cover__role">{{ t('hero.hero_role') }}</p>
       <p class="cover__description">{{ t('hero.hero_description') }}</p>
       <div class="cover__btns">
-        <a class="btns__contacts" href="">{{ t('hero.hero_contact_btn') }}</a>
+        <button @click="openModal1" class="btns__contacts" href="">
+          {{ t('hero.hero_contact_btn') }}
+        </button>
         <a class="btns__projects" href="">{{ t('hero.hero_projects_btn') }}</a>
       </div>
     </div>
-    <modalPhoto :isActiveModal="isActiveModal" :isActivePhoto="isActivePhoto" @close="closeModal" />
+    <modalPhoto
+      :isActiveModal="isActiveModalPhotoOverlay"
+      :isActivePhoto="isActiveModalPhotoBody"
+      @close="closeModal"
+    />
+    <modalContactMe
+      :isActiveModal="isActiveModalContactsMeOverlay"
+      :isActivePhoto="isActiveModalContactsMeBody"
+      @close="closeModal2"
+    />
   </section>
 </template>
 
 <script lang="js" setup>
 import { useI18n } from 'vue-i18n'
 import modalPhoto from './modal-photo.vue'
+import modalContactMe from './modal-contact-me.vue'
 import { ref } from 'vue'
 
-const isActiveModal = ref(false)
-const isActivePhoto = ref(false)
+const isActiveModalPhotoOverlay = ref(false)
+const isActiveModalPhotoBody = ref(false)
+
+const isActiveModalContactsMeOverlay = ref(false)
+const isActiveModalContactsMeBody = ref(false)
 
 function openModal() {
-  isActiveModal.value = true
-  isActivePhoto.value = true
+  isActiveModalPhotoOverlay.value = true
+  isActiveModalPhotoBody.value = true
+}
+
+function openModal1() {
+  isActiveModalContactsMeOverlay.value = true
+  isActiveModalContactsMeBody.value = true
 }
 
 function closeModal() {
-  isActiveModal.value = false
-  isActivePhoto.value = false
+  isActiveModalPhotoOverlay.value = false
+  isActiveModalPhotoBody.value = false
+}
+
+function closeModal2() {
+  isActiveModalContactsMeOverlay.value = false
+  isActiveModalContactsMeBody.value = false
 }
 const { t } = useI18n()
 </script>
@@ -136,10 +161,14 @@ const { t } = useI18n()
         border-radius: 8px;
         font-weight: 500;
         transition: all 0.3s ease;
+        font-size: 16px;
+        border: 2px solid var(--brand-primary);
       }
       &__contacts {
         background-color: var(--brand-primary);
         color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
         @media (hover: hover) {
           &:hover {
             background-color: var(--brand-secondary);
@@ -150,7 +179,6 @@ const { t } = useI18n()
 
       &__projects {
         color: var(--brand-primary);
-        border: 2px solid var(--brand-primary);
         @media (hover: hover) {
           &:hover {
             background-color: var(--brand-primary);
