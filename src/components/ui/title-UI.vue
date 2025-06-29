@@ -32,5 +32,6 @@
   width: 80px;
   height: 4px;
   background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
+  margin-bottom: 48px;
 }
 </style>
