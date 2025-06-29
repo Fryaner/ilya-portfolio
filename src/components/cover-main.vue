@@ -1,7 +1,7 @@
 <template>
   <section class="cover">
     <div class="cover__container">
-      <div class="cover__img">
+      <div @click="openModal" class="cover__img">
         <img src="../assets/images/cover-hero.jpg" alt="frontend-разработчик" />
       </div>
       <p class="cover__name">Илья Орлов</p>
@@ -13,12 +13,27 @@
         <a class="btns__projects" href="">{{ t('hero.hero_projects_btn') }}</a>
       </div>
     </div>
+    <modalPhoto :isActiveModal="isActiveModal" :isActivePhoto="isActivePhoto" @close="closeModal" />
   </section>
 </template>
 
 <script lang="js" setup>
 import { useI18n } from 'vue-i18n'
+import modalPhoto from './modal-photo.vue'
+import { ref } from 'vue'
 
+const isActiveModal = ref(false)
+const isActivePhoto = ref(false)
+
+function openModal() {
+  isActiveModal.value = true
+  isActivePhoto.value = true
+}
+
+function closeModal() {
+  isActiveModal.value = false
+  isActivePhoto.value = false
+}
 const { t } = useI18n()
 </script>
 
