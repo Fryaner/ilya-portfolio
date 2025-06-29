@@ -28,10 +28,18 @@
         </ul>
         <div class="header__btns">
           <div class="btns__settings">
-            <button @click="setTheme" class="btns__theme">
+            <button
+              :title="`${currentTheme ? t('themeAndLang.theme_tooltip_dark') : t('themeAndLang.theme_tooltip_light')}`"
+              @click="setTheme"
+              class="btns__theme"
+            >
               <i :class="!currentTheme ? 'fas fa-sun sun' : 'fas fa-moon moon'"></i>
             </button>
-            <button @click="changeLanguage" class="btns__lang">
+            <button
+              :title="`${currentLanguage === 'RU' ? t('themeAndLang.lang_tooltip') : t('themeAndLang.lang_tooltip')}`"
+              @click="changeLanguage"
+              class="btns__lang"
+            >
               {{ currentLanguage }}
             </button>
           </div>
