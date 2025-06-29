@@ -125,7 +125,7 @@ const { t } = useI18n()
       &__contacts {
         background-color: var(--brand-primary);
         color: rgb(255, 255, 255);
-        @media (hover: hove) {
+        @media (hover: hover) {
           &:hover {
             background-color: var(--brand-secondary);
             transform: translateY(-2px);
@@ -136,10 +136,11 @@ const { t } = useI18n()
       &__projects {
         color: var(--brand-primary);
         border: 2px solid var(--brand-primary);
-
-        &:hover {
-          background-color: var(--brand-primary);
-          color: rgb(255, 255, 255);
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--brand-primary);
+            color: rgb(255, 255, 255);
+          }
         }
       }
     }
