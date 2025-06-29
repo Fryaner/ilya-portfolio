@@ -122,6 +122,7 @@ const { t } = useI18n()
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 
     &:hover {
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
