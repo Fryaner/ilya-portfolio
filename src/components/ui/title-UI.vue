@@ -3,7 +3,7 @@
     <h2>
       <slot name="title"></slot>
     </h2>
-    <p><slot name="subtitle"></slot></p>
+    <p v-if="$slots.subtitle"><slot name="subtitle"></slot></p>
     <div class="line"></div>
   </div>
 </template>
