@@ -83,12 +83,14 @@ const { t } = useI18n()
 
 <style lang="scss" scoped>
 .work {
+  padding: 80px 24px;
   &__container {
     max-width: 1236px;
     margin: 0 auto;
-    padding: 80px 24px;
   }
-
+  [data-theme='dark'] &__experience {
+    border: 1px solid var(--border-color);
+  }
   &__experience {
     &-container {
       max-width: 896px;
@@ -109,6 +111,11 @@ const { t } = useI18n()
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media screen and (max-width: $media-mobile) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
 
       &__title {
@@ -141,11 +148,11 @@ const { t } = useI18n()
 
   &__item {
     display: flex;
-    align-items: center;
     font-size: 16px;
     gap: 12px;
 
     i {
+      margin-top: 4px;
       color: rgb(34 197 94 / var(--tw-text-opacity, 1));
     }
     span {

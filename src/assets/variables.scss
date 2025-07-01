@@ -30,7 +30,7 @@ $dark-bg-secondary: #1e293b;
 $dark-bg-gradient: linear-gradient(135deg, #0a1a1a 0%, #064e3b 30%, #0c4a6e 70%, #1e293b 100%);
 $dark-text-primary: #e6fffa;
 $dark-text-secondary: #a7f3d0;
-$dark-text-muted: #94a3b8;
+$dark-text-muted: #6ee7b7;
 $dark-border-color: #065f46;
 $dark-border-color-image: #10b981;
 $dark-card-bg: #1a2e3a;
@@ -77,14 +77,14 @@ $dark-form-bg-dark: linear-gradient(135deg, #334155 0%, #475569 100%);
   --card-bg: #{$dark-card-bg};
   --nav-bg: #{$dark-nav-bg};
 
-  --brand-primary: #{$brand-primary};
-  --brand-secondary: #{$brand-secondary};
-  --brand-accent: #{$brand-accent};
+  // --brand-primary: #{$dark-brand-primary};
+  // --brand-secondary: #{$dark-brand-secondary};
+  // --brand-accent: #{$dark-brand-accent};
 
-  --green-accent: #{$green-accent};
-  --blue-accent: #{$blue-accent};
-  --purple-accent: #{$purple-accent};
-  --green-bg: #{$green-bg};
-  --blue-bg: #{$blue-bg};
-  --purple-bg: #{$purple-bg};
+  // --green-accent: #{$dark-green-accent};
+  // --blue-accent: #{$dark-blue-accent};
+  // --purple-accent: #{$dark-purple-accent};
+  --green-bg: #{$dark-green-bg};
+  --blue-bg: #{$dark-blue-bg};
+  --purple-bg: #{$dark-purple-bg};
 }
